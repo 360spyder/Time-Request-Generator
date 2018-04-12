@@ -120,15 +120,23 @@
         </div>
         <div class="row">
           <div class="col-sm-2 col-sm-offset-5">
-            <div class="text-center"><a class="btn btn-primary btn-block" href='#' onClick="javascript:return myFunction()">Generate</a></div>
+            <div class="text-center"><a class="btn btn-primary btn-block" href='#' onClick="javascript:return generate()">Generate</a></div>
           </div>
         </div>
       </div>
       <div class='container'>
         <div class="well">
           <table class='table'>
-            <tr><th>Subject:</td><td><div id='subject'></div></td></tr>
-            <tr><th>Body:</td><td><div id='body'></div></td></tr>
+            <tr>
+              <th>Subject:</th>
+              <td><div id='subject'></div><input id='subject_copy' style='display: none' type='text'></td>
+              <td><button class='pull-right' type='button' onclick="copySubject()"><span class='glyphicon glyphicon-copy'></span></button></td>
+            </tr>
+            <tr>
+              <th>Body:</th>
+              <td><div id='body'></div></td>
+              <td><button class='pull-right' type='button' onclick="copyBody()"><span class='glyphicon glyphicon-copy'></span></button></td>
+            </tr>
           </table>
         </div>
       </div>
@@ -141,13 +149,13 @@
       <div class='row'>
         <div class='col-sm-4'>SPAWAR Request Time Generator</div>
         <div class='col-sm-4'><div class='text-center'>Christopher Nuhn - christopher.nuhn@navy.mil</div></div>
-        <div class='col-sm-4'><div class='text-right'>Version 0.9 Beta!</div></div>
+        <div class='col-sm-4'><a class='pull-right' href='https://github.com/360spyder/Time-Request-Generator'>Version 0.9 Beta!</a></div>
       </div>
     </div>
     </div>
   </footer>
   <script>
-    function myFunction() {
+    function generate() {
       var first_name = document.getElementById('first_name').value.toUpperCase();
       var last_name = document.getElementById('last_name').value.toUpperCase();
       var middle_initial = document.getElementById('middle_initial').value.toUpperCase();
@@ -168,7 +176,7 @@
       document.getElementById('subject').innerHTML = `${PRNR}_${last_name}_${first_name}_${middle_initial}_${saturday}_${leave_type.slice(0,2)}_${hours}HRS`;
       document.getElementById('body').innerHTML = `
         Request for ${leave_type.slice(5)}</br>
-        ${reason.replace(/(?:\r\n|\r|\n)/g, '<br />')}</br>
+        ${(reason != '') ? reason.replace(/(?:\r\n|\r|\n)/g, '</br>') + '</br>': ''}
         </br>
         <table>
           <tr>
@@ -217,7 +225,7 @@
   </script>
   <script>
     document.getElementById('hours').addEventListener("change", timeChange);
-    document.getElementById('leave_type').addEventListener("change", myFunction);
+    document.getElementById('leave_type').addEventListener("change", generate);
 
     function timeChange() {
       var time_from = parseInt(document.getElementById('time_from').value);
@@ -250,7 +258,34 @@
         var new_time = time_from + hours + minutes;
       };
       document.getElementById('time_to').value = ('0000' + new_time).slice(-4);
-      myFunction();
+      generate();
+    };
+  </script>
+  <script>
+    function copySubject() {
+      var subject = document.getElementById('subject').innerHTML;
+      tmp = document.createElement('TEXTAREA');
+      tmp.value = subject;
+      document.body.appendChild(tmp);
+      tmp.select();
+      document.execCommand("Copy");
+      document.body.removeChild(tmp);
+      return false;
+    };
+    function copyBody() {
+      var body = document.getElementById('body').innerHTML;
+      body = body.replace(/\s{2,}/g, '');
+      body = body.replace(/<br>|<tr>/g, '\r\n');
+      body = body.replace(/<\/td>/g, '\t');
+      body = body.replace(/<(\/*table|\/*tbody|\/*td|\/*tr)>/g, '');
+
+      tmp = document.createElement('TEXTAREA');
+      tmp.value = body;
+      document.body.appendChild(tmp);
+      tmp.select();
+      document.execCommand("Copy");
+      document.body.removeChild(tmp);
+      return false;
     };
   </script>
 </html>
