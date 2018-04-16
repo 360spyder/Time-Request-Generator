@@ -74,15 +74,91 @@
               <div class="col-sm-4"><div class="control-label">Leave Type:</div></div>
               <div class="col-sm-8">
                 <select id='leave_type' class='form-control'>
-                  <option value="LA - Leave Annual">LA - Leave Annual</option>
-                  <option value="LS - Leave Sick">LS - Leave Sick</option>
-                  <option value="CD - Credit Hours Earned">CD - Credit Hours Earned</option>
-                  <option value="CN - Credit Hours Taken">CN - Credit Hours Taken</option>
-                  <option value="CE - Comp Time Earned">CE - Comp Time Earned</option>
-                  <option value="CT - Comp Time Taken">CT - Comp Time Taken</option>
-                  <option value="CB - Comp Travel Earned">CB - Comp Travel Earned</option>
-                  <option value="CF - Comp Travel Taken">CF - Comp Travel Taken</option>
-                  <option value="TS - Telework">TS - Telework</option>
+                  <optgroup label="Most Common Leave">
+                    <option value="LA - Leave Annual">LA - Leave Annual</option>
+                    <option value="LS - Leave Sick">LS - Leave Sick</option>
+                    <option value="CD - Credit Hours Earned">CD - Credit Hours Earned</option>
+                    <option value="CN - Credit Hours Taken">CN - Credit Hours Taken</option>
+                    <option value="CE - Comp Time Earned">CE - Comp Time Earned</option>
+                    <option value="CT - Comp Time Taken">CT - Comp Time Taken</option>
+                    <option value="CB - Comp Travel Earned">CB - Comp Travel Earned</option>
+                    <option value="CF - Comp Travel Taken">CF - Comp Travel Taken</option>
+                    <option value="TS - Telework">TS - Telework</option>
+                  </optgroup>
+                  <optgroup label="All Leave Codes">
+                    <option value='CA - Religious Taken'>CA - Religious Taken</option>
+                    <option value='CB - Travel Compensatory Earned'>CB - Travel Compensatory Earned</option>
+                    <option value='CC - Compensatory Call Back'>CC - Compensatory Call Back</option>
+                    <option value='CD - Credit Hours Earned (Straight Time)'>CD - Credit Hours Earned (Straight Time)</option>
+                    <option value='CE - Compensatory Time Earned (Overtime)'>CE - Compensatory Time Earned (Overtime)</option>
+                    <option value='CF - Travel Compensatory Time Taken'>CF - Travel Compensatory Time Taken</option>
+                    <option value='CN - Credit Hours Taken'>CN - Credit Hours Taken</option>
+                    <option value='CR - Religious Earned (Straight Time)'>CR - Religious Earned (Straight Time)</option>
+                    <option value='CT - Compensatory Time Taken'>CT - Compensatory Time Taken</option>
+                    <option value='HC - Holiday Call Back'>HC - Holiday Call Back</option>
+                    <option value='HF - Holiday Work, First Shift'>HF - Holiday Work, First Shift</option>
+                    <option value='HG - Holiday Work (Graded)'>HG - Holiday Work (Graded)</option>
+                    <option value='HS - Holiday Work, Second Shift'>HS - Holiday Work, Second Shift</option>
+                    <option value='HT - Holiday Work, Third Shift'>HT - Holiday Work, Third Shift</option>
+                    <option value='KA - Leave Without Pay'>KA - Leave Without Pay</option>
+                    <option value='KB - Suspension'>KB - Suspension</option>
+                    <option value='KC - Absent Without Leave'>KC - Absent Without Leave</option>
+                    <option value="KD - Worker's Compensation">KD - Worker's Compensation</option>
+                    <option value='KE - Furlough'>KE - Furlough</option>
+                    <option value='KF - Non Duty'>KF - Non Duty</option>
+                    <option value='KG - Military Furlough'>KG - Military Furlough</option>
+                    <option value='KM - Missing time - Non-Pay'>KM - Missing time - Non-Pay</option>
+                    <option value='LA - Annual Leave'>LA - Annual Leave</option>
+                    <option value='LB - Advanced Annual Leave'>LB - Advanced Annual Leave</option>
+                    <option value='LC - Court Leave'>LC - Court Leave</option>
+                    <option value='LG - Advanced Sick Leave'>LG - Advanced Sick Leave</option>
+                    <option value='LH - Holiday'>LH - Holiday</option>
+                    <option value='LK - Home Leave'>LK - Home Leave</option>
+                    <option value='LM - Military Leave'>LM - Military Leave</option>
+                    <option value="LN - Administrative Leave</br><font color='red'>(Includes blood donation, relocation services for PCS, etc.)</font>">LN - Administrative Leave</option>
+                    <option value='LO - BRAC RESTORED '>LO - BRAC RESTORED </option>
+                    <option value='LP - Annual Restored #3'>LP - Annual Restored #3</option>
+                    <option value='LQ - Annual Restored #2'>LQ - Annual Restored #2</option>
+                    <option value='LR - Annual Restored #1'>LR - Annual Restored #1</option>
+                    <option value='LS - Sick Leave'>LS - Sick Leave</option>
+                    <option value="LS - Sick Leave (Family-Friendly)</br><font color='red'>Enter DE or DF in Prem. No. Column</font>">LS - Sick Leave (Family-Friendly)</option>
+                    <option value='LT - Traumatic Injury'>LT - Traumatic Injury</option>
+                    <option value='LU - Day of Injury '>LU - Day of Injury </option>
+                    <option value='LV - Excused Absence'>LV - Excused Absence</option>
+                    <option value='LX - Non-Work Paid at Straight Time (Day of Death)'>LX - Non-Work Paid at Straight Time (Day of Death)</option>
+                    <option value='LY - Time Off Award'>LY - Time Off Award</option>
+                    <option value='L9 - Emergency Leave'>L9 - Emergency Leave</option>
+                    <option value='ND - Night Differential'>ND - Night Differential</option>
+                    <option value='OA - Additional FLSA'>OA - Additional FLSA</option>
+                    <option value='OS - Overtime Scheduled'>OS - Overtime Scheduled</option>
+                    <option value='OU - Overtime Unscheduled'>OU - Overtime Unscheduled</option>
+                    <option value='OX - Overtime Unscheduled Exc.'>OX - Overtime Unscheduled Exc.</option>
+                    <option value='RF - Regular Ungraded First Shift'>RF - Regular Ungraded First Shift</option>
+                    <option value='RG - Regular (Graded)'>RG - Regular (Graded)</option>
+                    <option value='RS - Regular Ungraded Second Shift'>RS - Regular Ungraded Second Shift</option>
+                    <option value='RT - Regular Ungraded Third Shift'>RT - Regular Ungraded Third Shift</option>
+                    <option value='SG - Sunday Work (Graded)'>SG - Sunday Work (Graded)</option>
+                    <option value='SF - Sunday Ungraded First Shift'>SF - Sunday Ungraded First Shift</option>
+                    <option value='SS - Sunday Ungraded Second Shift'>SS - Sunday Ungraded Second Shift</option>
+                    <option value='ST - Sunday Ungraded Third Shift'>ST - Sunday Ungraded Third Shift</option>
+                  </optgroup>
+                  <optgroup label="Premium Codes">
+                    <option value='BA - Term Negotiations'>BA - Term Negotiations</option>
+                    <option value='BB - Mid-term Negotiations'>BB - Mid-term Negotiations</option>
+                    <option value='BD - Labor/Management REL'>BD - Labor/Management REL</option>
+                    <option value='BK - Grievance/Appeals'>BK - Grievance/Appeals</option>
+                    <option value='DA - FML Birth of Son/Daughter or Care of Newborn'>DA - FML Birth of Son/Daughter or Care of Newborn</option>
+                    <option value='DB - FML Adoption or Foster Care'>DB - FML Adoption or Foster Care</option>
+                    <option value='DC - FML Care for Spouse, Son, Daughter of Parent with Serious Health Condition'>DC - FML Care for Spouse, Son, Daughter of Parent with Serious Health Condition</option>
+                    <option value='DD - FML Serious Health Condition of Employee'>DD - FML Serious Health Condition of Employee</option>
+                    <option value='DE - FFL FEFFL Family Care/Bereavement'>DE - FFL FEFFL Family Care/Bereavement</option>
+                    <option value='DF - FFL Adoption Related Purposes'>DF - FFL Adoption Related Purposes</option>
+                    <option value='DM - FFL Wounded Veteran'>DM - FFL Wounded Veteran</option>
+                    <option value='PH - Preventive-health'>PH - Preventive-health</option>
+                    <option value='TM - Telework Medical'>TM - Telework Medical</option>
+                    <option value='TS - Telework Situational'>TS - Telework Situational</option>
+                    <option value='TW - Telework Regular'>TW - Telework Regular</option>
+                  </optgroup>
                 </select>
               </div>
               </br>
@@ -232,7 +308,7 @@
       var date_from = new Date(document.getElementById('date_from').value);
       var date_to = new Date(document.getElementById('date_to').value);
 
-      //Return if Dates are invalid
+      // Return if Dates are invalid
       if (isNaN(date_from.getTime()) == true){document.getElementById('time_to').value = "A Date From is Invalid"; return;};
       if (isNaN(date_to.getTime()) == true){document.getElementById('time_to').value = "A Date To is Invalid"; return;};
 
@@ -248,7 +324,7 @@
         var minutes = 0;
       };
 
-      //Return if Time invalid
+      // Return if Time invalid
       if (isNaN(hours) == true || isNaN(minutes) == true){document.getElementById('time_to').value = "A Hours is Invalid"; return;};
 
       if (parseInt((time_from + minutes).toString().slice(-2)) >= 60) {
@@ -289,3 +365,61 @@
     };
   </script>
 </html>
+<script>
+/*CA Religious Taken
+CB Travel Compensatory Earned (Regular Network and Activity)
+CC Compensatory Call Back
+CD Credit Hours Earned (Straight Time) (Regular Network and Activity)
+CE Compensatory Time Earned (Overtime) (Overtime Network and Activity)
+CF Travel Compensatory Time Taken
+CN Credit Hours Taken
+CR Religious Earned (Straight Time) (Regular Network and Activity)
+CT Compensatory Time Taken
+HC Holiday Call Back (Regular Network and Activity)
+HF Holiday Work, First Shift (Regular Network and Activity)
+HG Holiday Work (Graded) (Regular Network and Activity)
+HS Holiday Work, Second Shift (Regular Network and Activity)
+HT Holiday Work, Third Shift (Regular Network and Activity)
+KA Leave Without Pay
+KB Suspension
+KC Absent Without Leave
+KD Worker's Compensation
+KE Furlough
+KF Non Duty
+KG Military Furlough
+KM Missing time - Non-Pay
+LA Annual Leave
+LB Advanced Annual Leave
+LC Court Leave
+LG Advanced Sick Leave
+LH Holiday
+LK Home Leave
+LM Military Leave
+LN Administrative Leave (Includes blood donation, relocation services for PCS, etc.)
+LO BRAC RESTORED
+LP Annual Restored #3
+LQ Annual Restored #2
+LR Annual Restored #1
+LS Sick Leave
+LS Sick Leave (Family-Friendly) Enter DE or DF in Prem. No. Column
+LT Traumatic Injury
+LU Day of Injury
+LV Excused Absence
+LX Non-Work Paid at Straight Time (Day of Death)
+LY Time Off Award
+L9 Emergency Leave (Emergency Leave Transfer Program (ELTP) can be used when authorized by the President.  In the event of a major disaster or emergency that results in severe adverse affects for a substantial number of employees, any employee in any agency may donate unused annual leave for transfer to employees of the same or other agencies who are adversely affected by such disaster or emergency. )
+ND Night Differential (Regular Network and Activity)
+OA Additional FLSA (Overtime Network and Activity)
+OS Overtime Scheduled (Overtime Network and Activity)
+OU Overtime Unscheduled  (Overtime Network and Activity)
+OX Overtime Unscheduled Exc. (Overtime Network and Activity)
+RF Regular Ungraded First Shift (Regular Network and Activity)
+RG Regular (Graded) (Regular Network and Activity)
+RS Regular Ungraded Second Shift (Regular Network and Activity)
+RT Regular Ungraded Third Shift (Regular Network and Activity)
+SG Sunday Work (Graded) (Regular Network and Activity)
+SF Sunday Ungraded First Shift (Regular Network and Activity)
+SS Sunday Ungraded Second Shift (Regular Network and Activity)
+ST Sunday Ungraded Third Shift (Regular Network and Activity)
+*/
+</script>
