@@ -244,7 +244,7 @@
       var date_from = document.getElementById('date_from').value.split('/').join('');
       var date_to = document.getElementById('date_to').value.split('/').join('');
       var d = new Date(document.getElementById('date_from').value);
-      var saturday = `${date_from.slice(0,6)}${parseInt(date_from.slice(-2)) + (6 - d.getDay())}`;
+      var saturday = `${date_from.slice(0,6)}${('00' + (parseInt(date_from.slice(-2)) + (6 - d.getDay())).toString()).slice(-2)}`;
 
       var time_from = document.getElementById('time_from').value;
       var time_to = document.getElementById('time_to').value;
@@ -328,7 +328,6 @@
       if (isNaN(hours) == true || isNaN(minutes) == true){document.getElementById('time_to').value = "A Hours is Invalid"; return;};
 
       if (parseInt((time_from + minutes).toString().slice(-2)) >= 60) {
-        alert(time_from + hours + 100 + (minutes - 60))
         var new_time = time_from + hours + 100 + (minutes - 60);
       } else {
         var new_time = time_from + hours + minutes;
