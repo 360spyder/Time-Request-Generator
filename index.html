@@ -44,29 +44,32 @@
           document.getElementById('last_name').value = localStorage.getItem("last_name");
           document.getElementById('middle_initial').value = localStorage.getItem("middle_initial");
           document.getElementById('prnr').value = localStorage.getItem("prnr");
+          document.getElementById('comp').value = localStorage.getItem("comp");
         }
       });
     </script>
   </head>
 
-  <body height='1300px'>
+  <body height='1300px' style='overflow-y: auto'>
     <form class="form-horizontal">
       <div class="well" style='background: #EBF4FA;'>
         <div class="row">
           <div class="col-sm-4">
             <div class="form-group">
-              <div class="col-sm-4"><div class="control-label">First Name:</div></div>
-              <div class="col-sm-8"><input class="form-control" type="text" id="first_name"></div>
+              <div class="col-sm-3"><div class="control-label">First Name:</div></div>
+              <div class="col-sm-9"><input class="form-control" type="text" id="first_name"></div>
               </br>
               </br>
-              <div class="col-sm-4"><div class="control-label">Last Name:</div></div>
-              <div class="col-sm-8"><input class="form-control" type="text" id="last_name"></div>
+              <div class="col-sm-3"><div class="control-label">Last Name:</div></div>
+              <div class="col-sm-9"><input class="form-control" type="text" id="last_name"></div>
               </br>
               </br>
-              <div class="col-sm-2 col-sm-offset-2"><div class="control-label">MI:</div></div>
+              <div class="col-sm-1 col-sm-offset-2"><div class="control-label">MI:</div></div>
               <div class="col-sm-2"><input class="form-control" type="text" id="middle_initial"></div>
-              <div class="col-sm-2"><div class="control-label">PRNR:</div></div>
-              <div class="col-sm-4"><input class="form-control" type="text" id="prnr"></div>
+              <div class="col-sm-1"><div class="control-label">PRNR:</div></div>
+              <div class="col-sm-2"><input class="form-control" type="text" id="prnr"></div>
+              <div class="col-sm-2"><div class="control-label">Competency:</div></div>
+              <div class="col-sm-2"><input class="form-control" type="text" id="comp"></div>
             </div>
           </div>
           <div class="col-sm-4">
@@ -218,14 +221,13 @@
       </div>
     </form>
   </body>
-  <footer style='position: auto; bottom: 0; width: 100%;'>
-    <hr>
-    <div class='well' style='background: #000; color: #FFF;'>
+  <footer style='position: absolute; bottom: 0; width: 100%;'>
+    <div class='well' style='background: #000; color: #FFF; margin: 0; border-radius: 0;'>
     <div class='container'>
       <div class='row'>
         <div class='col-sm-4'>SPAWAR Request Time Generator</div>
         <div class='col-sm-4'><div class='text-center'>Christopher Nuhn - christopher.nuhn@navy.mil</div></div>
-        <div class='col-sm-4'><a class='pull-right' href='https://github.com/360spyder/Time-Request-Generator'>Version 0.9 Beta!</a></div>
+        <div class='col-sm-4'><a class='pull-right' href='https://github.com/360spyder/Time-Request-Generator'>Version 1.0</a></div>
       </div>
     </div>
     </div>
@@ -236,6 +238,7 @@
       var last_name = document.getElementById('last_name').value.toUpperCase();
       var middle_initial = document.getElementById('middle_initial').value.toUpperCase();
       var PRNR = document.getElementById('prnr').value;
+      var comp = document.getElementById('comp').value;
 
       var reason = document.getElementById('reason').value;
       var leave_type = document.getElementById('leave_type').value;
@@ -244,12 +247,32 @@
       var date_from = document.getElementById('date_from').value.split('/').join('');
       var date_to = document.getElementById('date_to').value.split('/').join('');
       var d = new Date(document.getElementById('date_from').value);
-      var saturday = `${date_from.slice(0,6)}${('00' + (parseInt(date_from.slice(-2)) + (6 - d.getDay())).toString()).slice(-2)}`;
+
+      // Slice date_from to calculate next Saturday
+      var  year = parseInt(date_from.slice(0,4));
+      var month = parseInt(date_from.slice(4,6));
+      var   day = parseInt(date_from.slice(6,8)) + (6 - d.getDay());
+
+      // Find days in the current month to see if there is overflow
+      var days_in_month = parseInt(new Date(year, month, 0).getDate());
+
+      // If overflow, handle day month year shifts
+      if (day > days_in_month) {
+        day = day % days_in_month;
+        month = month + 1;
+
+        if (month > 12) {
+          year = year + 1;
+          month = month % 12;
+        };
+      };
+
+      var saturday = ('0000' + year.toString()).slice(-4) + ('00' + month.toString()).slice(-2) + ('00' + day.toString()).slice(-2);
 
       var time_from = document.getElementById('time_from').value;
       var time_to = document.getElementById('time_to').value;
 
-      document.getElementById('subject').innerHTML = `${PRNR}_${last_name}_${first_name}_${middle_initial}_${saturday}_${leave_type.slice(0,2)}_${hours}HRS`;
+      document.getElementById('subject').innerHTML = `${PRNR}_${last_name}_${first_name}_${middle_initial}_${comp}_${saturday}_${leave_type.slice(0,2)}_${hours}HRS`;
       document.getElementById('body').innerHTML = `
         Request for ${leave_type.slice(5)}</br>
         ${(reason != '') ? reason.replace(/(?:\r\n|\r|\n)/g, '</br>') + '</br>': ''}
@@ -294,6 +317,7 @@
         localStorage.setItem("last_name", last_name);
         localStorage.setItem("middle_initial", middle_initial);
         localStorage.setItem("prnr", PRNR);
+        localStorage.setItem("comp", comp);
       };
 
       return false;
